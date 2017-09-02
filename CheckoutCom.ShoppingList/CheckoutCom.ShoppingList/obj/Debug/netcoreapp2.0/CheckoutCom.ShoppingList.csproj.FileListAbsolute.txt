@@ -1,0 +1,11 @@
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\bin\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.deps.json
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\bin\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.runtimeconfig.json
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\bin\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.runtimeconfig.dev.json
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\bin\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.dll
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\bin\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.pdb
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\obj\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.csprojResolveAssemblyReference.cache
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\obj\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.csproj.CoreCompileInputs.cache
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\obj\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.AssemblyInfoInputs.cache
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\obj\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.AssemblyInfo.cs
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\obj\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.dll
+D:\Projects\shopping-list-webapi\CheckoutCom.ShoppingList\CheckoutCom.ShoppingList\obj\Debug\netcoreapp2.0\CheckoutCom.ShoppingList.pdb
