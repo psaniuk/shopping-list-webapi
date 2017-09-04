@@ -17,6 +17,7 @@ namespace CheckoutCom.ShoppingList.Tests
         {
             ShoppingListRepository repo = CreateRepository();
             var controller = new ShoppingListController(repo);
+            
             controller.Post(new Drink {Name = "pepse", Quantity = 1});
             controller.Post(new Drink { Name = "pepse", Quantity = 1 });
             ShoppingListEntity shoppingList = repo.GetById(ShoppingListEntity.DefaultListId);

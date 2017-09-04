@@ -26,12 +26,16 @@ namespace CheckoutCom.ShoppingList.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
         public IEnumerable<Drink> Get() => _repository.GetById(ShoppingListEntity.DefaultListId).Drinks;
         
-        [HttpGet("{name}")]
-        [Route("{id}/drink/{name}")]
-        public IActionResult Get(string name)
+        [HttpGet]
+        [Route("{id}/drinks", Name = "GetByName")]
+        public IActionResult Get([FromQuery]string name)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                return BadRequest();
+
             ShoppingListEntity shoppingList = GetShoppingList();
             if (shoppingList == null)
                 return BadRequest();
@@ -44,7 +48,7 @@ namespace CheckoutCom.ShoppingList.Controllers
         }
 
         [HttpPost]
-        [Route("{id}/drink")]
+        [Route("{id}/drinks")]
         public IActionResult Post([FromBody]Drink drink)
         {
             if (string.IsNullOrWhiteSpace(drink?.Name) || drink.Quantity == 0)
@@ -61,17 +65,17 @@ namespace CheckoutCom.ShoppingList.Controllers
             shoppingList.Drinks.Add(drink);
             _repository.Update(shoppingList);
 
-            return Ok(drink);
+            return CreatedAtRoute("GetByName", new {Id = shoppingList.Id, Name= drink.Name}, drink);
         }
 
         [HttpPut]
-        [Route("{id}/drink")]
+        [Route("drinks")]
         public IActionResult Put([FromBody]Drink drink)
         {
             if (drink?.Id == null)
                 return BadRequest();
 
-            ShoppingListEntity shoppingList = GetShoppingList();
+            ShoppingListEntity shoppingList = _repository.GetById(drink.ShoppingListId);
             if (shoppingList == null)
                 return NotFound();
 
@@ -85,8 +89,8 @@ namespace CheckoutCom.ShoppingList.Controllers
             return Ok();
         }
 
-        [HttpDelete("{drinkId}")]
-        [Route("{id}/drink/{drinkId}")]
+        [HttpDelete]
+        [Route("{id}/drinks/{drinkId}")]
         public IActionResult Delete(int drinkId)
         {
             ShoppingListEntity shoppingList = GetShoppingList();
@@ -103,25 +107,7 @@ namespace CheckoutCom.ShoppingList.Controllers
             return Ok();
         }
 
-        private ShoppingListEntity GetShoppingList()
-        {
-            int? id = ParseShoppingListId();
-            return id == null ? null : _repository.GetById(id.Value);
-        }
-
-        private int? ParseShoppingListId()
-        {
-            if (!RouteData.Values.ContainsKey("id"))
-                return null;
-
-            string idParam = RouteData.Values["id"]?.ToString();
-            if (idParam == null)
-                return null;
-
-            if (!int.TryParse(idParam, out int id))
-                return null;
-
-            return id;
-        }
-    }
+        private ShoppingListEntity GetShoppingList() =>
+            RouteData.Values.TryGetValue("id", out object listIdValue) && int.TryParse(listIdValue?.ToString(), out int listid) ? _repository.GetById(listid) : null;
+     }
 }

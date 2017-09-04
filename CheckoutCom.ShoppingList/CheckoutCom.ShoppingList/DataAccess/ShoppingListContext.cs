@@ -18,11 +18,13 @@ namespace CheckoutCom.ShoppingList.DataAccess
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ShoppingListEntity>().HasKey(sl => sl.Id);
-            modelBuilder.Entity<Drink>().HasKey(d => d.Id);
-
-            modelBuilder.Entity<ShoppingListEntity>().
-                HasMany(sl => sl.Drinks).
-                WithOne(d => d.ShoppingList).IsRequired();
+            modelBuilder.Entity<Drink>(drink =>
+            {
+                drink.HasKey(d => d.Id);
+                drink.HasOne(d => d.ShoppingList).
+                    WithMany(sl => sl.Drinks).
+                    HasForeignKey(d => d.ShoppingListId);
+            });
         }
     }
 }
