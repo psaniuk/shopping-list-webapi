@@ -69,13 +69,13 @@ namespace CheckoutCom.ShoppingList.Controllers
         }
 
         [HttpPut]
-        [Route("drinks")]
+        [Route("{id}/drinks")]
         public IActionResult Put([FromBody]Drink drink)
         {
             if (drink?.Id == null)
                 return BadRequest();
 
-            ShoppingListEntity shoppingList = _repository.GetById(drink.ShoppingListId);
+            ShoppingListEntity shoppingList = GetShoppingList();
             if (shoppingList == null)
                 return NotFound();
 
